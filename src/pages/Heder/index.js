@@ -20,7 +20,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <div className='row mt-2 bg-success'>
+            <div className='row mt-2 bg-success sticky-top'>
                 <div
                     className='col bg-success text-light text-center pt-2'
                     style={{ height: 90, fontSize: 50 }}

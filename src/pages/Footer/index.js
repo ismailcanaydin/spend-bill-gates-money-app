@@ -15,7 +15,7 @@ function Footer() {
                 <span className='' style={{ marginLeft: 940 }}>Apache Helicopter</span>
               </div>
               <div className='position-absolute top-0 start-50 translate-middle'>
-                <span class="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
+                <span className="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
               </div>
               <div className='position-absolute top-0 start-100 translate-middle'>
                 <span className='text-success ' style={{ fontSize: 18, marginLeft: -880 }}>$2.3b</span>
@@ -26,7 +26,7 @@ function Footer() {
                 <span className='' style={{ marginLeft: 940 }}>NBA Team</span>
               </div>
               <div className='position-absolute top-0 start-50 translate-middle'>
-                <span class="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
+                <span className="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
               </div>
               <div className='position-absolute top-0 start-100 translate-middle'>
                 <span className='text-success ' style={{ fontSize: 18, marginLeft: -880 }}>$2.3b</span>
@@ -37,7 +37,7 @@ function Footer() {
                 <span className='' style={{ marginLeft: 940 }}>Apache Helicopter</span>
               </div>
               <div className='position-absolute top-0 start-50 translate-middle'>
-                <span class="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
+                <span className="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
               </div>
               <div className='position-absolute top-0 start-100 translate-middle'>
                 <span className='text-success ' style={{ fontSize: 18, marginLeft: -880 }}>$2.3b</span>
@@ -48,7 +48,7 @@ function Footer() {
                 <span className='' style={{ marginLeft: 940 }}>NBA Team</span>
               </div>
               <div className='position-absolute top-0 start-50 translate-middle'>
-                <span class="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
+                <span className="" style={{ fontSize: 18, marginLeft: 90 }}>X1</span>
               </div>
               <div className='position-absolute top-0 start-100 translate-middle'>
                 <span className='text-success ' style={{ fontSize: 18, marginLeft: -880 }}>$2.3b</span>
