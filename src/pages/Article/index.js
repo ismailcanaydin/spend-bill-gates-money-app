@@ -2,7 +2,7 @@ import './styles.css'
 
 import { fetchProducts } from '../../redux/productsSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Loading from '../../components/Loading'
 import Error from '../../components/Error'
@@ -12,8 +12,13 @@ function Article() {
     const status = useSelector((state) => state.products.status)
     const error = useSelector((state) => state.products.error)
 
+
+    const [quantity, setquantity] = useState()
+    console.log(quantity);
+    const [selectId, setSelectId] = useState(0)
+
     const dispatch = useDispatch()
-    console.log(status);
+
     useEffect(() => {
         if (status === 'idle') {
             dispatch(fetchProducts())
@@ -31,41 +36,50 @@ function Article() {
     return (
         <div className='row mt-2'>
 
-            {/* <Masonry
-                breakpointCols={3}
-                className="my-masonry-grid bg-white"
-                columnClassName="my-masonry-grid_column"
-                style={{ marginLeft: 0 }}>
-
-                {products.map((product) => (
-
-                    <div key={product.product_id}>
-
-                        <img alt={product.product_name} src={product.img} className='product' />
-
-                        <div className='char_name'>{product.productname} - <b>{product.product_price}</b></div>
-
-                    </div>
-                ))}
-            </Masonry> */}
-
             {products.map((product) => (
 
                 <div key={product.product_id} className="card mb-3 text-center" style={{ width: '23.75rem' }}>
                     <div className="card-body">
-                        <img alt={product.product_name} src={product.img} />
-                        <h5 className="card-title">{product.productname}</h5>
-                        <p className="card-text text-success fs-3 fw-semibold">${product.product_price}</p>
-                        <div className=''>
-                            <a href="#" className="btn bg-secondary-subtle fw-bold btn-lg button">Sell</a>
-                            <input type={'text'} className='text-center ms-2 me-2' value={0} size={4} />
-                            <a href="#" className="btn btn-success btn-lg button">Buy</a>
+                        <img alt={product.product_name} src={product.img} style={{}} />
+                        <div>
+                            <h5 className="card-title">{product.productname}</h5>
+                        </div>
+                        <div>
+                            <p className="card-text text-success fs-3 fw-semibold">${product.product_price}</p>
+                        </div>
+
+                        <div className='' style={{ position: '' }}>
+
+                            <button
+                                href="#"
+                                className="btn bg-secondary-subtle fw-bold btn-lg button"
+                            >Sell</button>
+
+                            <input
+                                id={product.product_id}
+                                type={'text'}
+                                className='text-center ms-2 me-2'
+                                defaultValue={quantity}
+                                size={4}
+                            />
+
+                            <button
+                                href="#"
+                                className="btn btn-success fw-bold btn-lg button"
+                                // onClick={(e) => setAmount(amount + 1)}
+                                onClick={() => {
+                                    setSelectId(product.product_id)
+                                    // if (selectId === product.product_id) {
+                                    //     setAmount(amount + 1)
+                                    //     console.log(product.amount)
+                                    // }
+                                }}
+                            >Buy</button>
+
                         </div>
                     </div>
                 </div>
             ))}
-
-
 
         </div>
     )
