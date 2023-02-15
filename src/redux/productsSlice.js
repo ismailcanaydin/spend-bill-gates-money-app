@@ -10,7 +10,7 @@ const productsSlice = createSlice({
     name: 'products',
     initialState: {
         items: [],
-        money: 100000000000,
+        totalMoney: 100000000000,
         lastMoney: 0,
         status: 'idle',
     },

@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const value = 100000000000;
-const num = '$' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+// const value = 100000000000;
 
 function Header() {
+    const value = useSelector((state) => state.products.totalMoney)
+    const totalMoney = '$' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+
     return (
         <>
             <div className='row bg-white'>
@@ -25,7 +28,7 @@ function Header() {
                     className='col bg-success text-light text-center pt-2'
                     style={{ height: 90, fontSize: 50 }}
                 >
-                    <span>{`${num}`}</span>
+                    <span>{`${totalMoney}`}</span>
                 </div>
             </div>
         </>

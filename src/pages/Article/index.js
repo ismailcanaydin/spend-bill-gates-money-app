@@ -17,6 +17,7 @@ function Article() {
     console.log(quantity);
     const [selectId, setSelectId] = useState(0)
 
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -32,6 +33,8 @@ function Article() {
     if (error) {
         return <Error message={error} />
     }
+
+    console.log(products.filter(product => product.product_id === 1));
 
     return (
         <div className='row mt-2'>
@@ -59,21 +62,29 @@ function Article() {
                                 id={product.product_id}
                                 type={'text'}
                                 className='text-center ms-2 me-2'
-                                defaultValue={quantity}
+                                defaultValue={product.amount}
                                 size={4}
                             />
 
                             <button
+                                id={product.product_id}
                                 href="#"
                                 className="btn btn-success fw-bold btn-lg button"
-                                // onClick={(e) => setAmount(amount + 1)}
-                                onClick={() => {
-                                    setSelectId(product.product_id)
-                                    // if (selectId === product.product_id) {
-                                    //     setAmount(amount + 1)
-                                    //     console.log(product.amount)
-                                    // }
+
+                                onClick={(e) => {
+                                    // if(product.product_id === )
+                                    console.log(`click id = ${e.target.id}`)
+                                    const click = products.filter(product => product.product_id === e.target.id)
+                                    console.log(products.filter(product => product.product_id == e.target.id))
+                                    console.log(product.product_id == e.target.id && product.amount + 1)
                                 }}
+                            // onClick={() => {
+                            // setSelectId(product.product_id)
+                            // if (selectId === product.product_id) {
+                            //     setAmount(amount + 1)
+                            //     console.log(product.amount)
+                            // }
+                            // }}
                             >Buy</button>
 
                         </div>
