@@ -10,9 +10,9 @@ export const fetchProducts = createAsyncThunk('products/getProducts', async () =
 const productsSlice = createSlice({
     name: 'products',
     initialState: {
-        items: [],
+        items: products,
         money: 100000000000,
-        lastMoney: 0,
+        currentMoney: 0,
         status: 'idle',
     },
     reducers: {
@@ -22,11 +22,10 @@ const productsSlice = createSlice({
             const product = state.items.find((item) => item.product_id === productItem.product_id)
             product.amount = quantity
 
-            let money = 0
+            let price = 0
 
-            state.items.map((item) => item.amount > 0 ? (money += item.amount * item.product_price) : "" )
-            state.currentMoney = Number(state.totalMoney) - money;
-            state.money = state.currentMoney
+            state.items.map((item) => item.amount > 0 ? (price += item.amount * item.product_price) : "" )
+            state.currentMoney = Number(state.money) - price;
 
         }
     },

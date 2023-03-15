@@ -10,13 +10,13 @@ import Error from '../../components/Error'
 
 
 function Article({ productItem }) {
+    const currentMoney = useSelector((state) => state.products.currentMoney)
+
     const status = useSelector((state) => state.products.status)
     const error = useSelector((state) => state.products.error)
 
 
-    const [quantity, setquantity] = useState()
-    console.log(quantity);
-    const [selectId, setSelectId] = useState(0)
+    const [quantity, setQuantity] = useState(0)
 
     const dispatch = useDispatch()
 
@@ -26,16 +26,16 @@ function Article({ productItem }) {
 
     const handleBuy = () => {
         setQuantity((p) => p + 1)
-        console.log(quantity);
+        // console.log(quantity);
     }
 
     const handleShell = () => {
         setQuantity((p) => p - 1)
-        console.log(quantity);
+        // console.log(quantity);
     }
 
     const handleChange = (value) => {
-        console.log(value);
+
     };
 
     if (status === 'loading') {
@@ -45,8 +45,6 @@ function Article({ productItem }) {
     if (error) {
         return <Error message={error} />
     }
-
-    console.log(products.filter(product => product.product_id === 1));
 
     return (
         <>
@@ -74,24 +72,21 @@ function Article({ productItem }) {
                                 >Sell</button>
 
                             <input
-                                id={product.product_id}
+                                id={productItem.product_id}
                                 type={'text'}
                                 className='text-center ms-2 me-2'
-                                defaultValue={quantity}
+                                value={quantity}
+                                onChange={handleChange}
                                 size={4}
                             />
 
                             <button
                                 href="#"
                                 className="btn btn-success fw-bold btn-lg button"
-                                // onClick={(e) => setAmount(amount + 1)}
-                                onClick={() => {
-                                    setSelectId(product.product_id)
-                                    // if (selectId === product.product_id) {
-                                    //     setAmount(amount + 1)
-                                    //     console.log(product.amount)
-                                    // }
-                                }}
+                                disabled={
+                                    currentMoney < productItem.product_price || currentMoney === 0 ? true : false
+                                }
+                                onClick={handleBuy}
                             >Buy</button>
 
                             </div>
