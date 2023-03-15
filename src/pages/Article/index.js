@@ -13,7 +13,10 @@ function Article({ productItem }) {
     const status = useSelector((state) => state.products.status)
     const error = useSelector((state) => state.products.error)
 
-    const [quantity, setQuantity] = useState(0)
+
+    const [quantity, setquantity] = useState()
+    console.log(quantity);
+    const [selectId, setSelectId] = useState(0)
 
     const dispatch = useDispatch()
 
@@ -43,6 +46,8 @@ function Article({ productItem }) {
         return <Error message={error} />
     }
 
+    console.log(products.filter(product => product.product_id === 1));
+
     return (
         <>
             {status === 'idle' &&
@@ -68,21 +73,26 @@ function Article({ productItem }) {
                                     disabled={quantity === 0 ? true : false}
                                 >Sell</button>
 
-                                <input
-                                    id={productItem.product_id}
-                                    type={'text'}
-                                    className='text-center ms-2 me-2'
-                                    value={quantity}
-                                    onChange={(e) => handleChange(e.target.value)}
-                                    size={4}
-                                />
+                            <input
+                                id={product.product_id}
+                                type={'text'}
+                                className='text-center ms-2 me-2'
+                                defaultValue={quantity}
+                                size={4}
+                            />
 
-                                <button
-                                    id={productItem.product_id}
-                                    href="#"
-                                    className="btn btn-success fw-bold btn-lg button"
-                                    onClick={handleBuy}
-                                >Buy</button>
+                            <button
+                                href="#"
+                                className="btn btn-success fw-bold btn-lg button"
+                                // onClick={(e) => setAmount(amount + 1)}
+                                onClick={() => {
+                                    setSelectId(product.product_id)
+                                    // if (selectId === product.product_id) {
+                                    //     setAmount(amount + 1)
+                                    //     console.log(product.amount)
+                                    // }
+                                }}
+                            >Buy</button>
 
                             </div>
                         </div>

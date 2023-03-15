@@ -1,10 +1,20 @@
 import React from 'react'
+<<<<<<< HEAD
 import { useSelector } from 'react-redux';
 
 function Header() {
 
     const money = useSelector((state) => state.products.money)
     const num = '$' + money.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+=======
+import { useSelector } from 'react-redux'
+
+// const value = 100000000000;
+
+function Header() {
+    const value = useSelector((state) => state.products.totalMoney)
+    const totalMoney = '$' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+>>>>>>> b0421472d700c6efdad56af2970ccf3c1720d02f
 
     return (
         <>
@@ -27,7 +37,7 @@ function Header() {
                     className='col bg-success text-light text-center pt-2'
                     style={{ height: 90, fontSize: 50 }}
                 >
-                    <span>{`${num}`}</span>
+                    <span>{`${totalMoney}`}</span>
                 </div>
             </div>
         </>
