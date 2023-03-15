@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
+import { products } from "../products"
 
 export const fetchProducts = createAsyncThunk('products/getProducts', async () => {
     const res = await axios.get(`${process.env.REACT_APP_API_BASE_ENDPOINT}/products`)
@@ -9,12 +10,28 @@ export const fetchProducts = createAsyncThunk('products/getProducts', async () =
 const productsSlice = createSlice({
     name: 'products',
     initialState: {
-        items: [],
+        items: products,
         money: 100000000000,
+        totalMoney: 100000000000,
+        currentMoney: 0,
         lastMoney: 0,
         status: 'idle',
     },
-    reducers: {},
+    reducers: {
+        addToChart: (state, action) => {
+            const { quantity, productItem } = action.payload
+
+            const product = state.items.find((item) => item.product_id === productItem.product_id)
+            product.amount = quantity
+
+            let money = 0
+
+            state.items.map((item) => item.amount > 0 ? (money += item.amount * item.product_price) : "" )
+            state.currentMoney = Number(state.totalMoney) - money;
+            state.money = state.currentMoney
+
+        }
+    },
     extraReducers: {
         [fetchProducts.pending]: (state, action) => {
             state.status = 'loading'
@@ -30,4 +47,5 @@ const productsSlice = createSlice({
     }
 })
 
+export const { addToChart } = productsSlice.actions
 export default productsSlice.reducer

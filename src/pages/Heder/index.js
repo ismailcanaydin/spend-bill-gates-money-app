@@ -1,9 +1,11 @@
 import React from 'react'
-
-const value = 100000000000;
-const num = '$' + value.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+import { useSelector } from 'react-redux';
 
 function Header() {
+
+    const money = useSelector((state) => state.products.money)
+    const num = '$' + money.toFixed(0).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")
+
     return (
         <>
             <div className='row bg-white'>
