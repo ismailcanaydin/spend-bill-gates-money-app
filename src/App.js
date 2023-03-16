@@ -1,5 +1,4 @@
 import './App.css';
-import Article from './pages/Article';
 import Items from './pages/Article/Items';
 import Footer from './pages/Footer';
 import Header from './pages/Heder';
