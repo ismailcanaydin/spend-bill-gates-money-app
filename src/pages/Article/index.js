@@ -8,13 +8,11 @@ import { addToChart } from '../../redux/productsSlice'
 import Loading from '../../components/Loading'
 import Error from '../../components/Error'
 
-
 function Article({ productItem }) {
     const currentMoney = useSelector((state) => state.products.currentMoney)
 
     const status = useSelector((state) => state.products.status)
     const error = useSelector((state) => state.products.error)
-
 
     const [quantity, setQuantity] = useState(0)
 
@@ -49,27 +47,24 @@ function Article({ productItem }) {
     return (
         <>
             {status === 'idle' &&
+                <div key={productItem.product_id} className="card-group mb-3 text-center" style={{ width: '23.75rem' }}>
+                    <div className="card-body bg-light pt-2 pb-2">
+                        <img alt={productItem.product_name} src={productItem.img} style={{}} />
+                        <div>
+                            <h5 className="card-title">{productItem.product_name}</h5>
+                        </div>
+                        <div>
+                            <p className="card-text text-success fs-3 fw-semibold">${productItem.product_price}</p>
+                        </div>
 
-                <div className='row mt-2'>
+                        <div className='' style={{ position: '' }}>
 
-                    <div key={productItem.product_id} className="card mb-3 text-center" style={{ width: '23.75rem' }}>
-                        <div className="card-body">
-                            <img alt={productItem.product_name} src={productItem.img} style={{}} />
-                            <div>
-                                <h5 className="card-title">{productItem.productname}</h5>
-                            </div>
-                            <div>
-                                <p className="card-text text-success fs-3 fw-semibold">${productItem.product_price}</p>
-                            </div>
-
-                            <div className='' style={{ position: '' }}>
-
-                                <button
-                                    href="#"
-                                    className="btn bg-secondary-subtle fw-bold btn-lg button"
-                                    onClick={handleShell}
-                                    disabled={quantity === 0 ? true : false}
-                                >Sell</button>
+                            <button
+                                href="#"
+                                className="btn bg-secondary-subtle fw-bold btn-lg button"
+                                onClick={handleShell}
+                                disabled={quantity === 0 ? true : false}
+                            >Sell</button>
 
                             <input
                                 id={productItem.product_id}
@@ -89,12 +84,12 @@ function Article({ productItem }) {
                                 onClick={handleBuy}
                             >Buy</button>
 
-                            </div>
                         </div>
                     </div>
-
                 </div>
             }
+
+
         </>
     )
 }
